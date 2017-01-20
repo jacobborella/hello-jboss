@@ -20,6 +20,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 /**
  * A simple REST service which is able to say hello to someone using HelloService Please take a look at the web.xml where JAX-RS
@@ -37,8 +38,11 @@ public class HelloWorld {
     @GET
     @Path("/json")
     @Produces({ "application/json" })
-    public String getHelloWorldJSON() {
-        return "{\"result\":\"" + helloService.createHelloMessage("World") + "\"}";
+    public String getHelloWorldJSON(@QueryParam("name") String name) {
+    	if(name == null || "".equals(name)) {
+    		name = "World";
+    	}
+        return "{\"result\":\"" + helloService.createHelloMessage(name) + "\"}";
     }
 
     @GET
