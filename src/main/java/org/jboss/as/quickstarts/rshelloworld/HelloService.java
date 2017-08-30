@@ -25,7 +25,7 @@ package org.jboss.as.quickstarts.rshelloworld;
 public class HelloService {
 
     String createHelloMessage(String name) {
-        return "Hello " + name + "!:v2";
+        return "Hello " + name + "!:v3";
     }
 
 }
