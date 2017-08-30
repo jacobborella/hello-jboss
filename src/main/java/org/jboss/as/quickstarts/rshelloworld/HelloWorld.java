@@ -49,7 +49,7 @@ public class HelloWorld {
     		hostname = InetAddress.getLocalHost().getHostName();
     		
     	} catch(Exception e) {}
-        return "{\"result\":\"" + helloService.createHelloMessage(name) + "\", \"host\":\"" + hostname + "\"}";
+        return "{\"result\":\"" + helloService.createHelloMessage(name) + "\", \"hostname\":\"" + hostname + "\"}";
     }
 
     @GET
