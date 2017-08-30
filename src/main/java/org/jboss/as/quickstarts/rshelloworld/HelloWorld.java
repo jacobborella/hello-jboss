@@ -16,6 +16,8 @@
  */
 package org.jboss.as.quickstarts.rshelloworld;
 
+import java.net.InetAddress;
+
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -42,7 +44,12 @@ public class HelloWorld {
     	if(name == null || "".equals(name)) {
     		name = "World";
     	}
-        return "{\"result\":\"" + helloService.createHelloMessage(name) + "\"}";
+    	String hostname = "unknown";
+    	try {
+    		hostname = InetAddress.getLocalHost().getHostName();
+    		
+    	} catch(Exception e) {}
+        return "{\"result\":\"" + helloService.createHelloMessage(name) + "\", \"host\":\"" + hostname + "\"}";
     }
 
     @GET
